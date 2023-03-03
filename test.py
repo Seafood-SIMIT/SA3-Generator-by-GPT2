@@ -24,7 +24,7 @@ def main():
     batch_size = hp.train.batch_size
 
     tokenizer = tokenization_bert.BertTokenizer(vocab_file = hp.tokenizer.tokenizer_path)
-    model = GPT2LMHeadModel.from_pretrained(hp.model.model_path)
+    model = GPT2LMHeadModel.from_pretrained(hp.test.model_path)
     model.to(device)
     model.eval()
 

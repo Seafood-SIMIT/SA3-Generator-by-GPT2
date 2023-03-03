@@ -31,11 +31,12 @@ def main():
         os.mkdir(work_path)
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print("Using device: [%s]"%(device))
 
     tokenizer = tokenization_bert.BertTokenizer(vocab_file = hp.tokenizer.tokenizer_path)
     #use brand new mode 
     model_config = transformers.GPT2Config.from_json_file(hp.model.model_config)
-    print('config:\n' + model_config.to_json_string())
+    #print('config:\n' + model_config.to_json_string())
 
     n_ctx = model_config.n_ctx
 
@@ -45,6 +46,7 @@ def main():
     model.train()
 
     n_ctx= model.config.n_ctx
+    #n_ctx = hp.model.n_ctx
 
     train_set= createDataloader(hp, tokenizer, n_ctx)
 

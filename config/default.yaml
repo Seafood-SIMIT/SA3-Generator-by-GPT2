@@ -1,12 +1,12 @@
 mode_path: 'model/model.bin'
 
 data:
-  raw_data: '[CLS]态势感知'
+  raw_data: '德军'
   num_pieces: 100       #语料分多少分
-  raw_dir: 'data/raw'
+  raw_dir: 'data/0302_sa/raw'
   raw: True
-  train_dir: 'data/train'
-  stride: 768
+  train_dir: 'data/0302_sa/train'
+  stride: 128
 
 tokenizer:
   tokenizer_path: 'model/final_model/vocab.txt'
@@ -15,9 +15,9 @@ model:
   model_path: 'model/final_model'
   model_config: 'model/final_model/config.json'
 train:
-  batch_size: 2
+  batch_size: 8
   max_grad_norm: 1.0
-  epoch: 32
+  epoch: 64
   optimizer: 'adam'
   adam: 0.001
   lr_final: 0.0001
@@ -34,3 +34,8 @@ outputs:
   store: True
   output_dir: 'outputs'
   save_samples_path: 'outputs/samples'
+
+
+test:
+  model_path: 'outputs/20230302_gpt2_newdata/model_saved/model_epoch32'
+  model_config: 'outputs/20230302_gpt2_newdata/model_saved/model_epoch32/config.json'

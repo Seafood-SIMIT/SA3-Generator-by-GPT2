@@ -65,7 +65,7 @@ def createDataloader(hp,tokenizer, n_ctx):
     samples = readData(hp, tokenizer, n_ctx)
     #数据准备
     #print(data.shape ,label.shape)
-    print(samples.shape)
+    print('data samples shape ',samples.shape)
     loader_train = DataLoader(dataset=HRRPDataset(samples ),
                       batch_size =hp.train.batch_size, 
                       shuffle=True,
