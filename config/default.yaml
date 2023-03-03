@@ -15,7 +15,7 @@ model:
   model_path: 'model/final_model'
   model_config: 'model/final_model/config.json'
 train:
-  batch_size: 8
+  batch_size: 2
   max_grad_norm: 1.0
   epoch: 64
   optimizer: 'adam'
@@ -25,8 +25,8 @@ train:
 out:
   temperature: 1
   topk: 8   #最高几选一
-  topp: 0     #最高积累概率
-  length: 50
+  topp: 0.5 #最高积累概率
+  length: 678
   fast_pattern: False
   repetition_penalty: 1.0
   
@@ -37,5 +37,5 @@ outputs:
 
 
 test:
-  model_path: 'outputs/20230302_gpt2_newdata/model_saved/model_epoch32'
-  model_config: 'outputs/20230302_gpt2_newdata/model_saved/model_epoch32/config.json'
+  model_path: 'outputs/20230303_hparamsreset_200epoch/model_saved/model_epoch64'
+  model_config: 'outputs/20230303_hparamsreset_200epoch/model_saved/model_epoch64/config.json'

@@ -30,7 +30,7 @@ def main():
     if not os.path.exists(work_path):
         os.mkdir(work_path)
     
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda:4" if torch.cuda.is_available() else "cpu"
     print("Using device: [%s]"%(device))
 
     tokenizer = tokenization_bert.BertTokenizer(vocab_file = hp.tokenizer.tokenizer_path)
@@ -60,6 +60,7 @@ def main():
             train_set=train_set,
             model=model,
             model_save_path=model_save_path,
+            device = device,
             )
     
     print('train finished')

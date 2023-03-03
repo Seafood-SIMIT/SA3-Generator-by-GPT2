@@ -5,7 +5,7 @@ import torch.optim as optim
 from tqdm import tqdm
 import torch
 import os
-def train(hp, train_set, model, model_save_path ): 
+def train(hp, train_set, model, model_save_path,device ): 
 
     if hp.train.optimizer == 'adabound':
         optimizer = AdaBound(model.parameters(),
@@ -24,6 +24,8 @@ def train(hp, train_set, model, model_save_path ):
         loss_sum = 0
         with tqdm(desc = 'Epoch %d - train'%(c_e+1), unit = 'it', total = len(train_set)) as pbar:
             for seq_start, labels in train_set:
+                seq_start = seq_start.to(device)
+                labels = labels.to(device)
 
                 #print(seq_start.shape,labels.shape)
                 seq_predict = model.forward(input_ids = seq_start, labels = labels)
